@@ -9,6 +9,12 @@ if [ -z $users ]; then
   exit 1
 fi
 
+# Check if the Nextcloud container is running
+if ! docker ps | grep -q nextcloud; then
+  echo "Nextcloud container is not running"
+  exit 1
+fi
+
 # Loop through the number of users and add them to the system
 for i in $(seq 1 $users);
 do
@@ -18,3 +24,6 @@ do
 done
 
 echo "Users added successfully"
+
+# Warning message to update the number of users employed in the locustfile.py script to perform the tests
+echo "Please update the number of users in the locustfile.py script to match the number of users added"

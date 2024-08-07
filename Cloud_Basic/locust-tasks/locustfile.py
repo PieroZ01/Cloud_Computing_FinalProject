@@ -3,14 +3,16 @@ import random
 from locust import HttpUser, task, between
 from requests.auth import HTTPBasicAuth
 
+URL = "localhost:8080"
+
 class NextcloudUser(HttpUser):
     auth = None
     user_name = None
-    wait_time = between(2, 5)
+    wait_time = between(2, 5) # wait time between tasks
     
     # Login and authentication task
     def on_start(self):
-        user_idx = random.randrange(1, 61) # change the range to the number of users you want to simulate with
+        user_idx = random.randrange(1, 21) # IMPORTANT: change the range to the number of users you want to simulate with
         self.user_name = f"test_User_{user_idx}"
         self.auth = HTTPBasicAuth(self.user_name, f"test_Password_{user_idx}")
     
@@ -47,4 +49,8 @@ class NextcloudUser(HttpUser):
         with open("/test_data/large_file_1GB", "rb") as file:
             self.client.put(remote_path, data=file, auth=self.auth)
         self.client.delete(remote_path, auth=self.auth) # delete the file after uploading it to keep the storage clean
-            
+        
+    # Task to download a 5MB file from the root directory of the user
+    @task(5)
+    def download_file_5MB(self):
+        self.client.get(f"{URL}/remote.php/dav/files/{self.user_name}/test_file_5MB", auth=self.auth)

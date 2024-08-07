@@ -17,4 +17,8 @@ dd if=/dev/zero of=$DIR/large_file_1GB bs=1024 count=1048576
 
 # List files
 ls -lh $DIR
-echo "Files created successfully!"
+
+# Check if the files were created
+if [ -f "$DIR/small_file_5KB" ] && [ -f "$DIR/average_file_5MB" ] && [ -f "$DIR/large_file_1GB" ]; then
+  echo "Files created successfully!"
+fi
