@@ -9,7 +9,7 @@ kubectl create namespace nextcloud
 # Define the persistent volumes and the persistent volume claims
 # to store the data in case of a pod failure
 cd volumes # This directory contains the yaml files for the persistent volumes and the persistent volume claims
-kubectl apply -f local-path.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 kubectl apply -f nextcloud-pv.yaml -n nextcloud
 kubectl apply -f nextcloud-pvc.yaml -n nextcloud
 kubectl apply -f nextcloud-postgresql-pv.yaml -n nextcloud
@@ -37,4 +37,4 @@ cd ..
 # Download the Nextcloud Helm chart and install it
 helm repo add nextcloud https://nextcloud.github.io/helm/
 helm repo update
-helm install nextcloud_advanced nextcloud/nextcloud -f values.yaml -n nextcloud
+helm install nextcloud-advanced nextcloud/nextcloud -f values.yaml -n nextcloud

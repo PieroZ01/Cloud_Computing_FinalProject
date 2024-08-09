@@ -86,3 +86,6 @@ kubectl taint nodes --all  node-role.kubernetes.io/control-plane-
 mkdir -p /home/volumes
 mkdir -p /home/volumes/nextcloud
 mkdir -p /home/volumes/postgresql
+
+# Install tmux to be able to later set up a port forward to connect to the service from the host machine
+dnf install -y tmux

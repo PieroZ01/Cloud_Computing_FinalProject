@@ -21,7 +21,7 @@ nextcloud:
   persistence:
     enabled: true
     accessMode: ReadWriteOnce
-    size: 3Gi
+    size: 5Gi
     existingClaim: nextcloud-pvc
   strategy:
     type: Recreate
@@ -31,7 +31,7 @@ nginx:
   enabled: true
   image:
     repository: nginx
-    tag: alpine
+    tag: 1.27.0-alpine
     pullPolicy: IfNotPresent
   containerPort: 80
 
@@ -55,7 +55,7 @@ externalDatabase:
 postgresql:
   enabled: true
   image:
-    tag:
+    tag: 16.0
     pullPolicy: IfNotPresent
   global:
     postgresql:
@@ -71,13 +71,13 @@ postgresql:
     persistence:
       enabled: true
       accessMode: ReadWriteOnce
-      size: 3Gi
+      size: 5Gi
       existingClaim: nextcloud-postgresql-pvc
 
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
-  size: 3Gi
+  size: 5Gi
   existingClaim: nextcloud-pvc
           
 # Redis settings
