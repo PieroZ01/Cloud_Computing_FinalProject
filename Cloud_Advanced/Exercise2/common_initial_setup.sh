@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script is intended to be run on both nodes of the cluster (both the virtual machines) to prepare the environment
+# It will install the necessary packages and configure the system
+
 # Load modules for container runtime
 modprobe overlay
 modprobe br_netfilter
@@ -41,24 +44,16 @@ EOF
 
 # Some utils
 dnf install iproute-tc wget vim bash-completion bat -y
-# CRI-o
-dnf install crio -y
-# real kube
+# Real kube
 dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+# Install CRI-o, podman, docker and helm
+dnf install -y crio podman docker helm
 
 # Enable and start the services
 sed -i 's/10.85.0.0\/16/10.17.0.0\/16/' /etc/cni/net.d/100-crio-bridge.conflist
 systemctl enable --now crio
 systemctl enable --now kubelet
-
-kubeadm init --pod-network-cidr=10.17.0.0/16
-
-# Copy the kubeconfig
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-alias k=kubectl
+systemctl enable --now docker
 
 # Install k9s
 cd /tmp
@@ -75,16 +70,7 @@ alias k=kubectl
 source < (kubectl completion bash)
 EOF
 
-# Install Helm
-dnf install -y helm
-
-# Remove the taint
-kubectl taint nodes --all  node-role.kubernetes.io/control-plane-
-
-# Create directories for the persistent volumes
-mkdir -p /home/volumes
-mkdir -p /home/volumes/nextcloud
-mkdir -p /home/volumes/postgresql
-
-# Install tmux to be able to later set up a port forward to connect to the service from the host machine
-dnf install -y tmux
+# Install the CNI plugin (container networking interface)
+sudo mkdir -p /opt/cni/bin
+sudo curl -O -L https://github.com/containernetworking/plugins/releases/download/v1.2.0/cni-plugins-linux-amd64-v1.2.0.tgz
+sudo tar -C /opt/cni/bin -xzf cni-plugins-linux-amd64-v1.2.0.tgz
