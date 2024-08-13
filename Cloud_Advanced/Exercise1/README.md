@@ -92,11 +92,11 @@ scp -r nextcloud root@<VM_IP>:/root/home
 
 Then, you can run the script on the VM; it will deploy the *Nextcloud* instance with a `PostgreSQL` database and a `Redis` cache. The script will also create a `MetalLB` load balancer to expose the *Nextcloud* instance to the outside world, define the necessary persistent volumes (`pv`) and persistent volume claims (`pvc`) and create the needed `secrets`.
 
->Note: The `deploy_nextcloud.sh` script assumes that the `nextcloud` folder is located in the `/root/home` directory. If you copied the folder to a different location, you need to update the script accordingly.
+>Note: the `deploy_nextcloud.sh` script assumes that the `nextcloud` folder is located in the `/root/home` directory. If you copied the folder to a different location, you need to update the script accordingly.
 
 Specifically, the script will deploy the *Nextcloud* instance using the `Helm` package manager: the *Nextcloud* chart is installed with the custom values defined in the `values.yaml` file.
 
->Note: The installation of the `MetalLB` load balancer has been done following the instructions in the official documentation.
+>Note: the installation of the `MetalLB` load balancer has been done following the instructions in the official documentation.
 
 ### Accessing Nextcloud
 
