@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script is used to estimate the latency of the barrier collective operation by
+# This script is used to estimate the latency of the scatter collective operation by
 # running the OSU latency benchmark on a single node.
 
 # Create the osu-benchmark namespace if it does not exist
