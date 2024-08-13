@@ -125,7 +125,7 @@ scp install_mpi_flannel.sh root@<VM_IP>:/root
 
 Then, you can run the script on the master node; it will install `MPI` and `Flannel` on the master node.
 
-> **Note:** The installation of `MPI` and `Flannel` has been done following the instructions provided in the official documentations.
+> **Note:** the installation of `MPI` and `Flannel` has been done following the instructions provided in the official documentations.
 
 After this step, you can check the status of the pods running in the cluster by running the following command:
 
