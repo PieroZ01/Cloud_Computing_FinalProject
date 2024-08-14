@@ -36,7 +36,7 @@ To deploy the Nextcloud instance, you first need to create a new virtual machine
 
 ### VM Setup
 
-You first need to install a new VM using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VM, but you can use any other virtualization tool. The important thing is to have a VM with at least 2 CPUs and 2GB of RAM.
+You first need to install a new VM using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VM, as my host machine runs on `macOS`, but you can use other virtualization tools like `VirtualBox` if you are using a different operating system. The important thing is to have a VM with at least 2 CPUs and 2GB of RAM.
 
 When creating the VM, make sure to enable the root login via `SSH` in order to be able to easily access the VM from your host machine. 
 
