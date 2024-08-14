@@ -149,10 +149,10 @@ scp -r OSU_benchmarks root@<VM_IP>:/root/home
 
 This folder contains the `yaml` manifests and `bash` scripts to run the OSU benchmark in the two-nodes `Kubernetes` cluster. Specifically, you can run the following four *benchmarks*:
 
-- latency-one-node: to estimate the point to point latency between two workers running on the same node.
-- latency-two-nodes: to estimate the point to point latency between two workers running on two different nodes.
-- scatter-one-node: to estimate the latency of the scatter collective operation, by placing both workers on the same node.
-- scatter-two-nodes: to estimate the latency of the scatter collective operation, by placing one worker pod on each node.
+- `latency-one-node`: to estimate the point to point latency between two workers running on the same node.
+- `latency-two-node`s: to estimate the point to point latency between two workers running on two different nodes.
+- `scatter-one-node`: to estimate the latency of the scatter collective operation, by placing both workers on the same node.
+- `scatter-two-nodes`: to estimate the latency of the scatter collective operation, by placing one worker pod on each node.
 
 To run the *benchmarks*, you have to enter the `OSU_benchmarks` folder and execute the corresponding script. For example, to run the `latency-one-node` benchmark, you can run the following commands:
 
