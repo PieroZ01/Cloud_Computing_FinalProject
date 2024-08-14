@@ -40,7 +40,7 @@ To deploy and run the OSU benchmark, you first need to create two new virtual ma
 
 ### VM Setup
 
-You first need to install two new VMs using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VMs, but you can use any other virtualization tool. The important thing is to have two VMs with at least 2 CPUs and 2GB of RAM.
+You first need to install two new VMs using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VMs, as my host machine runs on `macOS`, but you can use other virtualization tools like `VirtualBox` if you are using a different operating system. The important thing is to have two VMs with at least 2 CPUs and 2GB of RAM.
 
 When creating the VMs, make sure to enable the root login via `SSH` in order to be able to easily access the VMs from your host machine.
 
