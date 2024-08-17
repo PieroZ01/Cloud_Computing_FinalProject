@@ -12,7 +12,7 @@ class NextcloudUser(HttpUser):
     
     # Login and authentication task
     def on_start(self):
-        user_idx = random.randrange(1, 21) # IMPORTANT: change the range to the number of users you want to simulate with
+        user_idx = random.randrange(1, 51) # IMPORTANT: change the range to the number of users you want to simulate with
         self.user_name = f"test_User_{user_idx}"
         self.auth = HTTPBasicAuth(self.user_name, f"test_Password_{user_idx}")
     
