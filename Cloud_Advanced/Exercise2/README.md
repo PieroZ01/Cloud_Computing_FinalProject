@@ -40,7 +40,7 @@ To deploy and run the OSU benchmark, you first need to create two new virtual ma
 
 ### VM Setup
 
-You first need to install two new VMs using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VMs, but you can use any other virtualization tool. The important thing is to have two VMs with at least 2 CPUs and 2GB of RAM.
+You first need to install two new VMs using a [Fedora39](https://fedoraproject.org/server/download) image. I used `UTM` to create the VMs, as my host machine runs on `macOS`, but you can use other virtualization tools like `VirtualBox` if you are using a different operating system. The important thing is to have two VMs with at least 2 CPUs and 2GB of RAM.
 
 When creating the VMs, make sure to enable the root login via `SSH` in order to be able to easily access the VMs from your host machine.
 
@@ -149,10 +149,10 @@ scp -r OSU_benchmarks root@<VM_IP>:/root/home
 
 This folder contains the `yaml` manifests and `bash` scripts to run the OSU benchmark in the two-nodes `Kubernetes` cluster. Specifically, you can run the following four *benchmarks*:
 
-- latency-one-node: to estimate the point to point latency between two workers running on the same node.
-- latency-two-nodes: to estimate the point to point latency between two workers running on two different nodes.
-- scatter-one-node: to estimate the latency of the scatter collective operation, by placing both workers on the same node.
-- scatter-two-nodes: to estimate the latency of the scatter collective operation, by placing one worker pod on each node.
+- `latency-one-node`: to estimate the point to point latency between two workers running on the same node.
+- `latency-two-nodes`: to estimate the point to point latency between two workers running on two different nodes.
+- `scatter-one-node`: to estimate the latency of the scatter collective operation, by placing both workers on the same node.
+- `scatter-two-nodes`: to estimate the latency of the scatter collective operation, by placing one worker pod on each node.
 
 To run the *benchmarks*, you have to enter the `OSU_benchmarks` folder and execute the corresponding script. For example, to run the `latency-one-node` benchmark, you can run the following commands:
 
