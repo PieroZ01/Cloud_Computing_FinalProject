@@ -94,7 +94,7 @@ Then, you can run the script on the VM; it will deploy the *Nextcloud* instance 
 
 >**Note**: the `deploy_nextcloud.sh` script assumes that the `nextcloud` folder is located in the `/root/home` directory. If you copied the folder to a different location, you need to update the script accordingly.
 
-Specifically, the script will deploy the *Nextcloud* instance using the `Helm` package manager: the *Nextcloud* chart is installed with the custom values defined in the `values.yaml` file.
+Specifically, the script will deploy the *Nextcloud* instance using the `Helm` package manager: the official *Nextcloud* `Helm` chart is installed with the custom values defined in the `values.yaml` file.
 
 >**Note**: the installation of the `MetalLB` load balancer has been done following the instructions in the official documentation.
 
